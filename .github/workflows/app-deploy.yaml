@@ -51,6 +51,7 @@ jobs:
       slug: ${{ steps.override.outputs.slug }}
       target: ${{ steps.information.outputs.target }}
       version: ${{ steps.release.outputs.version }}
+      sha: ${{ steps.commit.outputs.sha }}
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -70,6 +71,29 @@ jobs:
             slug="${INPUT_SLUG}"
           fi
           echo "slug=${slug}" >> "$GITHUB_OUTPUT"
+      - name: ℹ️ Fetch the commit that triggered deploy
+        id: commit
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_run" ]]; then
+            echo "sha=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
+            echo "ref=${{ github.event.workflow_run.head_branch }}" >> "$GITHUB_OUTPUT"
+            BRANCH="${{ github.event.workflow_run.head_branch }}"
+            
+            echo "Sha: ${{ github.event.workflow_run.head_sha }}"
+          else
+            echo "sha=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+            echo "ref=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+            BRANCH="${{ github.ref_name }}"
+
+            echo "Sha: ${{ github.sha }}"
+          fi
+
+          echo "Ref: $BRANCH"
+          if [[ "${BRANCH}" == "main" ]]; then
+            echo "environment=stable" >> "$GITHUB_OUTPUT"
+          else
+            echo "environment=edge" >> "$GITHUB_OUTPUT"
+          fi
       - name: ℹ️ Gather version and environment
         id: release
         env:
