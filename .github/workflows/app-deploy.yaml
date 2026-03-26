@@ -240,7 +240,8 @@ jobs:
               "app": "${{ needs.information.outputs.slug }}",
               "name": "${{ needs.information.outputs.name }}",
               "repository": "${{ github.repository }}",
-              "version": "${{ needs.information.outputs.version }}"
+              "version": "${{ needs.information.outputs.version }}",
+              "sha": "${{ needs.information.outputs.sha }}"
             }
 
   publish-beta:
