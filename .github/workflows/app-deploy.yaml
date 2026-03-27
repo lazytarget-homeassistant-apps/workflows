@@ -116,6 +116,8 @@ jobs:
 
           echo "environment=${environment}" >> "$GITHUB_OUTPUT"
           echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "environment: ${environment}"
+          echo "version: ${version}"
 
   deploy:
     name: 👷 Build & Deploy ${{ matrix.architecture }}
