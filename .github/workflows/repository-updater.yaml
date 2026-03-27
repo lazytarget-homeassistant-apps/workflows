@@ -22,6 +22,8 @@ jobs:
       - name: 🚀 Run Repository Updater
         uses: lazytarget-homeassistant-apps/repository-updater@main
         with:
-          app: ${{ github.event.client_payload.app }}
-          repository: ${{ github.repository }}
           token: ${{ secrets.UPDATER_TOKEN }}
+          app: ${{ github.event.client_payload.app }}
+          name: ${{ github.event.client_payload.name }}
+          repository: ${{ github.repository }}
+          sha: ${{ github.event.client_payload.sha }}
