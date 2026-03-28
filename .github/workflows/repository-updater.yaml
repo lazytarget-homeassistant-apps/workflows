@@ -24,5 +24,6 @@ jobs:
         with:
           token: ${{ secrets.UPDATER_TOKEN }}
           app: ${{ github.event.client_payload.app }}
+          name: ${{ github.event.client_payload.name }}
           repository: ${{ github.repository }}
           sha: ${{ github.event.client_payload.sha }}
