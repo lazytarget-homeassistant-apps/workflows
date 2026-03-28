@@ -47,7 +47,7 @@ jobs:
       build: ${{ steps.information.outputs.build }}
       description: ${{ steps.information.outputs.description }}
       environment: ${{ steps.release.outputs.environment }}
-      name: ${{ steps.information.outputs.name }}
+      name: ${{ steps.release.outputs.name }}
       slug: ${{ steps.override.outputs.slug }}
       target: ${{ steps.information.outputs.target }}
       version: ${{ steps.release.outputs.version }}
@@ -101,6 +101,7 @@ jobs:
           TAG_NAME: ${{ github.event.release.tag_name }}
           IS_PRERELEASE: ${{ github.event.release.prerelease }}
           SHA: ${{ github.sha }}
+          APP_NAME: ${{ steps.information.outputs.name }}
         run: |
           environment="edge"
           version="${SHA:0:7}"
@@ -114,10 +115,20 @@ jobs:
             fi
           fi
 
+          if [[ "$environment" == "edge" ]]; then
+            name="${APP_NAME} (EDGE)"
+          elif [[ "$environment" == "beta" ]]; then
+            name="${APP_NAME} (BETA)"
+          else
+            name="${APP_NAME}"
+          fi
+
           echo "environment=${environment}" >> "$GITHUB_OUTPUT"
           echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "name=${name}" >> "$GITHUB_OUTPUT"
           echo "environment: ${environment}"
           echo "version: ${version}"
+          echo "name: ${name}"
 
   deploy:
     name: 👷 Build & Deploy ${{ matrix.architecture }}
