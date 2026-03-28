@@ -100,7 +100,8 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           TAG_NAME: ${{ github.event.release.tag_name }}
           IS_PRERELEASE: ${{ github.event.release.prerelease }}
-          SHA: ${{ github.sha }}
+          #SHA: ${{ github.sha }}
+          SHA: ${{ steps.commit.outputs.sha }}
           APP_NAME: ${{ steps.information.outputs.name }}
         run: |
           environment="edge"
@@ -191,7 +192,7 @@ jobs:
             BUILD_DESCRIPTION=${{ needs.information.outputs.description }}
             BUILD_FROM=${{ steps.flags.outputs.from }}
             BUILD_NAME=${{ needs.information.outputs.name }}
-            BUILD_REF=${{ github.sha }}
+            BUILD_REF=${{ needs.information.outputs.sha }}
             BUILD_REPOSITORY=${{ github.repository }}
             BUILD_VERSION=${{ needs.information.outputs.version }}
 
