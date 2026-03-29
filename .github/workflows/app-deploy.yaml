@@ -101,7 +101,6 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           TAG_NAME: ${{ github.event.release.tag_name }}
           IS_PRERELEASE: ${{ github.event.release.prerelease }}
-          #SHA: ${{ github.sha }}
           SHA: ${{ steps.commit.outputs.sha }}
           APP_NAME: ${{ steps.information.outputs.name }}
         run: |
