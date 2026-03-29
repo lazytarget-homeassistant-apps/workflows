@@ -183,7 +183,6 @@ jobs:
           # zizmor: ignore[template-injection] - path input to action, not shell-executed
           context: ${{ needs.information.outputs.target }}
           file: ${{ needs.information.outputs.target }}/Dockerfile
-          no-cache: true
           cache-from: |
             type=gha,scope=${{ matrix.architecture }}
             type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${{ matrix.architecture }}:edge
