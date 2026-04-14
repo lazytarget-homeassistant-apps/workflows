@@ -24,7 +24,7 @@ jobs:
       - name: ⤵️ Download latest labels definitions
         run: |
           curl -s --retry 5 \
-            "https://raw.githubusercontent.com/lazytarget-homeassistant-apps/workflows/a49df5784a10fbff95c14918244b619a47a7b6da/.github/labels.yml" \
+            "https://raw.githubusercontent.com/lazytarget-homeassistant-apps/workflows/562d7aa1647d057256d59b4937df96773216e66e/.github/labels.yml" \
             > labels.yml
       - name: 🚀 Run Label Syncer
         uses: micnncim/action-label-syncer@3abd5ab72fda571e69fffd97bd4e0033dd5f495c # v1.3.0
