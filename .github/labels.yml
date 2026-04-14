@@ -25,7 +25,7 @@
   description: "Generic maintenance tasks."
 - name: "ci"
   color: 1d76db
-  description: "Work that improves the continue integration."
+  description: "Work that improves the continuous integration."
 - name: "dependencies"
   color: 1d76db
   description: "Upgrade or downgrade of project dependencies."
@@ -41,7 +41,7 @@
   description: "There has not been activity on this issue or PR for quite some time."
 - name: "no-stale"
   color: fef2c0
-  description: "This issue or PR is exempted from the stable bot."
+  description: "This issue or PR is exempted from the stale bot."
 
 - name: "security"
   color: ee0701
@@ -49,9 +49,9 @@
 - name: "incomplete"
   color: fef2c0
   description: "Marks a PR or issue that is missing information."
-- name: "invalid"
-  color: fef2c0
-  description: "Marks a PR or issue that is missing information."
+- name: "wontfix"
+  color: ffffff
+  description: "This will not be worked on."
 
 - name: "beginner-friendly"
   color: 0e8a16
@@ -59,13 +59,6 @@
 - name: "help-wanted"
   color: 0e8a16
   description: "We need some extra helping hands or expertise in order to resolve this."
-
-- name: "hacktoberfest"
-  description: "Issues/PRs are participating in the Hacktoberfest."
-  color: fbca04
-- name: "hacktoberfest-accepted"
-  description: "Issues/PRs are participating in the Hacktoberfest."
-  color: fbca04
 
 - name: "priority-critical"
   color: ee0701
