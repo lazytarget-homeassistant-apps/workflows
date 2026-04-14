@@ -32,6 +32,9 @@
 - name: "translations"
   color: d4c5f9
   description: "Impacts translations."
+- name: "blueprint"
+  color: 01B4DA
+  description: "Home Assistant blueprints."
 
 - name: "in-progress"
   color: fbca04
